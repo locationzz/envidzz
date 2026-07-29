@@ -8,74 +8,84 @@
   <title>envidzz — plugin developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="wrap">
-    <!-- Header / tabs -->
+  <!-- Loading overlay: hello in 15 languages -->
+  <div id="loader" class="loader">
+    <div class="loader-word" id="loaderWord">Hello</div>
+    <div class="loader-bar"><span id="loaderBar"></span></div>
+    <div class="loader-sub">envidzz</div>
+  </div>
+
+  <div id="page" class="page">
     <header class="head">
       <div class="brand">
-        <span class="name">envidzz</span><span class="cursor">_</span>
-        <span class="role">minecraft plugin dev</span>
+        <span class="logo">e</span>
+        <div class="brand-text">
+          <span class="name">envidzz</span>
+          <span class="role">minecraft plugin developer</span>
+        </div>
       </div>
       <nav class="tabs" role="tablist" aria-label="sections">
-        <button class="tab is-active" role="tab" aria-selected="true" data-tab="about">about</button>
-        <button class="tab" role="tab" aria-selected="false" data-tab="projects">projects</button>
-        <button class="tab" role="tab" aria-selected="false" data-tab="stack">stack</button>
-        <button class="tab" role="tab" aria-selected="false" data-tab="contact">contact</button>
+        <button class="tab is-active" role="tab" aria-selected="true" data-tab="about">About</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="projects">Projects</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="stack">Stack</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="contact">Contact</button>
       </nav>
     </header>
 
     <main class="views">
       <!-- ABOUT -->
       <section id="about" class="view is-active" role="tabpanel">
-        <p class="lead">I build Minecraft plugins for <strong>Paper / Spigot</strong> on Java 21, targeting modern 1.21+ servers — punishment suites, team frameworks, and utilities that do one thing correctly.</p>
-        <p>Storage done right (YAML where it fits, SQL with migrations where it matters). Permission-aware commands with full tab completion. MiniMessage-formatted feedback. Admin tools that treat the operator as a user.</p>
-        <p>Nether RTP scans for a solid block with two air above. LiteBanX resolves offline players via async Mojang lookup before the main thread ever blocks. TeamX persists a shared ender chest across restarts. When a plugin ships, it should feel like it came with the server.</p>
-        <ul class="quick">
-          <li><span>plugins</span><b>3</b></li>
-          <li><span>java</span><b>21</b></li>
-          <li><span>paper</span><b>1.21</b></li>
-          <li><span>license</span><b>MIT</b></li>
-        </ul>
+        <h1 class="hero">Hi, I'm <span class="grad">envidzz</span>.</h1>
+        <p class="lead">I build Minecraft plugins for <strong>Paper / Spigot</strong> on Java 21 — punishment suites, team frameworks, and utilities that do one thing, well.</p>
+        <p>Storage done right: YAML where it fits, SQL with migrations where it matters. Permission-aware commands with full tab completion, MiniMessage-formatted feedback, and admin tooling that treats the operator as a user.</p>
+        <p>When a plugin ships, it should feel like it came with the server.</p>
+        <div class="stats">
+          <div class="stat"><b>3</b><span>plugins</span></div>
+          <div class="stat"><b>21</b><span>java</span></div>
+          <div class="stat"><b>1.21</b><span>paper</span></div>
+          <div class="stat"><b>MIT</b><span>license</span></div>
+        </div>
       </section>
 
       <!-- PROJECTS -->
       <section id="projects" class="view" role="tabpanel" hidden>
         <div class="cards">
-          <article class="card" style="--accent:#33ff66">
-            <header>
+          <article class="card" style="--accent:#5ad1ff">
+            <div class="card-top">
               <h3>SimpleRTP</h3>
               <span class="ver">v1.4.2 · mc 1.21+</span>
-            </header>
+            </div>
             <p class="tag">Random-teleport that respects the terrain.</p>
             <ul>
               <li>/rtp opens a dimension-picker GUI: Overworld / Nether / End</li>
               <li>Overworld lands only on open-to-sky surfaces — never caves or overhangs</li>
-              <li>Nether/End scan vertically for a solid block with 2 air above</li>
-              <li>Avoids lava, water, fire, magma, cactus, powder snow, cobwebs and more</li>
+              <li>Nether / End scan vertically for a solid block with 2 air above</li>
+              <li>Avoids lava, water, fire, magma, cactus, powder snow, cobwebs</li>
               <li>Per-dimension radius, cooldown, and max attempts — all configurable</li>
               <li>Admin: /rtpadmin enable|disable &lt;dim&gt;, status, reload (alias /rtpa)</li>
             </ul>
             <div class="chips">
-              <span>Paper API 1.21</span><span>Java 21</span><span>Adventure</span><span>GUI</span><span>MiniMessage</span>
+              <span>Paper 1.21</span><span>Java 21</span><span>Adventure</span><span>GUI</span><span>MiniMessage</span>
             </div>
           </article>
 
-          <article class="card" style="--accent:#21e6ff">
-            <header>
+          <article class="card" style="--accent:#7c5cff">
+            <div class="card-top">
               <h3>TeamX</h3>
               <span class="ver">v2.1.0 · mc 1.21+</span>
-            </header>
+            </div>
             <p class="tag">Teams with weight — roles, alliances, a shared chest.</p>
             <ul>
               <li>Team panel GUI; team home with warmup (cancels on move/damage)</li>
-              <li>Shared ender chest persisted to disk across restarts (/team echest)</li>
-              <li>Roles: Owner / Officer / Member; team chat (/tc) and owner announce</li>
+              <li>Shared ender chest persisted to disk across restarts</li>
+              <li>Roles: Owner / Officer / Member; team chat (/tc) and announce</li>
               <li>Alliances (request/accept/break) — allies can't damage each other</li>
               <li>Tab list shows team name + color; rename, recolor, disband</li>
-              <li>Admin: scan every team chest for an item; read-only snapshot of any chest</li>
+              <li>Admin: scan every team chest for an item; read-only snapshots</li>
             </ul>
             <div class="chips">
               <span>Paper / Spigot</span><span>Java 21</span><span>YAML</span><span>GUI</span><span>MiniMessage</span>
@@ -83,20 +93,20 @@
           </article>
 
           <article class="card" style="--accent:#ffb454">
-            <header>
+            <div class="card-top">
               <h3>LiteBanX <span class="alt">(BanX)</span></h3>
               <span class="ver">v3.0.1 · MIT · mc 1.21+</span>
-            </header>
-            <p class="tag">A punishment suite that scales from one /ban to a full platform.</p>
+            </div>
+            <p class="tag">A punishment suite that scales to a full moderation platform.</p>
             <ul>
               <li>ban, tempban, ipban, tempipban, mute, tempmute, warn, kick, note</li>
-              <li>/banx &lt;sub&gt; with full tab completion; short forms (/ban, /mute…) too</li>
+              <li>/banx &lt;sub&gt; with full tab completion; short forms too</li>
               <li>Order-insensitive parsing — duration and reason in any order</li>
               <li>Offline players via DB cache + async Mojang lookup</li>
-              <li>Reason templates, warning points, and auto-escalation thresholds</li>
-              <li>Alt detection; themed ban/mute/kick screens; broadcast titles</li>
+              <li>Reason templates, warning points, and auto-escalation</li>
+              <li>Alt detection; themed screens; broadcast titles</li>
               <li>MySQL (HikariCP) or SQLite with auto schema migration</li>
-              <li>PlaceholderAPI hooks; optional webhook; importers for AdvancedBan &amp; LiteBans</li>
+              <li>PlaceholderAPI hooks; webhook; importers for AdvancedBan &amp; LiteBans</li>
             </ul>
             <div class="chips">
               <span>Paper 1.21+</span><span>Java 21</span><span>HikariCP</span><span>SQLite/MySQL</span><span>PlaceholderAPI</span><span>MIT</span>
@@ -107,33 +117,38 @@
 
       <!-- STACK -->
       <section id="stack" class="view" role="tabpanel" hidden>
-        <table class="stack">
-          <tbody>
-            <tr><td>platform</td><td>Paper / Spigot 1.21+</td></tr>
-            <tr><td>language</td><td>Java 21 (LTS)</td></tr>
-            <tr><td>ui</td><td>Adventure Components · MiniMessage · InventoryHolder GUIs</td></tr>
-            <tr><td>storage</td><td>YAML · SQLite · MySQL (HikariCP)</td></tr>
-            <tr><td>hooks</td><td>PlaceholderAPI · webhooks</td></tr>
-            <tr><td>build</td><td>Maven · shaded uber-jar</td></tr>
-            <tr><td>license</td><td>MIT (LiteBanX)</td></tr>
-          </tbody>
-        </table>
+        <div class="stack-grid">
+          <div class="stack-row"><span class="k">platform</span><span class="v">Paper / Spigot 1.21+</span></div>
+          <div class="stack-row"><span class="k">language</span><span class="v">Java 21 (LTS)</span></div>
+          <div class="stack-row"><span class="k">ui</span><span class="v">Adventure · MiniMessage · InventoryHolder GUIs</span></div>
+          <div class="stack-row"><span class="k">storage</span><span class="v">YAML · SQLite · MySQL (HikariCP)</span></div>
+          <div class="stack-row"><span class="k">hooks</span><span class="v">PlaceholderAPI · webhooks</span></div>
+          <div class="stack-row"><span class="k">build</span><span class="v">Maven · shaded uber-jar</span></div>
+          <div class="stack-row"><span class="k">license</span><span class="v">MIT (LiteBanX)</span></div>
+        </div>
       </section>
 
       <!-- CONTACT -->
       <section id="contact" class="view" role="tabpanel" hidden>
         <p class="lead">DMs open for commissions — custom plugins, porting, and fixes.</p>
-        <ul class="links">
-          <li><a href="https://github.com/locationzz" rel="noopener">github<span>github.com/locationzz</span></a></li>
-          <li><a href="#" rel="noopener">discord<span>envidzz</span></a></li>
-          <li><a href="mailto:envidzz@craft.local">email<span>envidzz@craft.local</span></a></li>
-        </ul>
-        <p class="note">// no telemetry · no tracking · no images · pure html/css/js</p>
+        <div class="links">
+          <a href="https://github.com/locationzz" rel="noopener">
+            <span class="l-name">GitHub</span><span class="l-val">github.com/locationzz</span>
+          </a>
+          <a href="#" rel="noopener">
+            <span class="l-name">Discord</span><span class="l-val">envidzz</span>
+          </a>
+          <a href="mailto:envidzz@craft.local">
+            <span class="l-name">Email</span><span class="l-val">envidzz@craft.local</span>
+          </a>
+        </div>
+        <p class="note">no telemetry · no tracking · no images · pure html/css/js</p>
       </section>
     </main>
 
     <footer class="foot">envidzz © 2026 — Paper/Spigot plugin developer</footer>
   </div>
+
   <script src="app.js"></script>
 </body>
 </html>
