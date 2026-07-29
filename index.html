@@ -1,303 +1,139 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="term">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="envidzz — Minecraft plugin developer (Paper / Spigot · Java 21 · MC 1.21+). SimpleRTP, TeamX, LiteBanX." />
   <meta name="color-scheme" content="dark" />
-  <title>envidzz@craft:~$</title>
+  <title>envidzz — plugin developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- CRT overlay layers (pointer-events:none) -->
-  <div class="scanlines" aria-hidden="true"></div>
-  <div class="vignette" aria-hidden="true"></div>
-  <div class="flicker" aria-hidden="true"></div>
-
-  <!-- Boot sequence -->
-  <div id="boot" aria-hidden="true">
-    <pre class="boot-log" id="bootLog"></pre>
-  </div>
-
-  <a class="skip" href="#hero">skip to content</a>
-
-  <!-- Header / window chrome -->
-  <header id="top" class="titlebar">
-    <div class="titlebar-left">
-      <span class="glyphs" aria-hidden="true">▪ ▪ ▪</span>
-      <span class="wordmark">envidzz<span class="cursor">_</span></span>
-    </div>
-    <nav class="titlebar-nav" aria-label="primary">
-      <a href="#hero">~about</a>
-      <a href="#projects">~projects</a>
-      <a href="#stack">~stack</a>
-      <a href="#contact">~contact</a>
-    </nav>
-    <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="mobileNav" aria-label="toggle menu">
-      <span>≡</span>
-    </button>
-  </header>
-  <div id="mobileNav" class="mobile-nav" hidden>
-    <a href="#hero">~about</a>
-    <a href="#projects">~projects</a>
-    <a href="#stack">~stack</a>
-    <a href="#contact">~contact</a>
-  </div>
-
-  <main class="terminal">
-    <!-- HERO -->
-    <section id="hero" class="section" tabindex="-1">
-      <div class="prompt"><span class="user">envidzz@craft</span><span class="sep">:</span><span class="path">~</span><span class="dollar">$</span> <span class="cmd">whoami</span></div>
-      <div class="output">
-        <p><span class="gt">&gt;</span> envidzz — Minecraft plugin developer (Paper / Spigot · Java 21 · MC 1.21+)</p>
-        <p><span class="gt">&gt;</span> focus: server-grade plugins that feel native to the platform — punishment suites, team frameworks, quality-of-life tools</p>
-        <p><span class="gt">&gt;</span> builds: clean APIs, persistent storage, MiniMessage UX, admin tooling that respects operators</p>
+  <div class="wrap">
+    <!-- Header / tabs -->
+    <header class="head">
+      <div class="brand">
+        <span class="name">envidzz</span><span class="cursor">_</span>
+        <span class="role">minecraft plugin dev</span>
       </div>
-      <div class="prompt"><span class="user">envidzz@craft</span><span class="sep">:</span><span class="path">~</span><span class="dollar">$</span> <span class="cmd">cat ./tagline.txt</span></div>
-      <div class="output">
-        <p class="tagline">I write the plugins I'd want running on my own server.</p>
-      </div>
-      <div class="prompt ghost"><span class="user">envidzz@craft</span><span class="sep">:</span><span class="path">~</span><span class="dollar">$</span> <span class="cmd">ls ./projects/</span> <span class="cursor">▮</span></div>
-      <div class="cta-row">
-        <a href="#projects" class="chip chip-cyan">[ ./view-plugins ]</a>
-        <a href="#stack" class="chip chip-dim">[ ./view-stack ]</a>
-      </div>
-      <div class="stat-chips" aria-label="stats">
-        <span class="stat">plugins: 3</span>
-        <span class="stat">java: 21</span>
-        <span class="stat">paper: 1.21</span>
-        <span class="stat">license: MIT</span>
-      </div>
-    </section>
+      <nav class="tabs" role="tablist" aria-label="sections">
+        <button class="tab is-active" role="tab" aria-selected="true" data-tab="about">about</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="projects">projects</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="stack">stack</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="contact">contact</button>
+      </nav>
+    </header>
 
-    <hr class="ascii-rule" />
+    <main class="views">
+      <!-- ABOUT -->
+      <section id="about" class="view is-active" role="tabpanel">
+        <p class="lead">I build Minecraft plugins for <strong>Paper / Spigot</strong> on Java 21, targeting modern 1.21+ servers — punishment suites, team frameworks, and utilities that do one thing correctly.</p>
+        <p>Storage done right (YAML where it fits, SQL with migrations where it matters). Permission-aware commands with full tab completion. MiniMessage-formatted feedback. Admin tools that treat the operator as a user.</p>
+        <p>Nether RTP scans for a solid block with two air above. LiteBanX resolves offline players via async Mojang lookup before the main thread ever blocks. TeamX persists a shared ender chest across restarts. When a plugin ships, it should feel like it came with the server.</p>
+        <ul class="quick">
+          <li><span>plugins</span><b>3</b></li>
+          <li><span>java</span><b>21</b></li>
+          <li><span>paper</span><b>1.21</b></li>
+          <li><span>license</span><b>MIT</b></li>
+        </ul>
+      </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="section" tabindex="-1">
-      <div class="prompt"><span class="user">envidzz@craft</span><span class="sep">:</span><span class="path">~</span><span class="dollar">$</span> <span class="cmd">cat about.md</span></div>
-      <div class="output about">
-        <p class="comment"># about</p>
-        <p><span class="gt">&gt;</span> I build Minecraft plugins for Paper and Spigot on Java 21, targeting modern 1.21+ servers. My work leans toward the systems operators actually need: punishment suites that won't fight you, team frameworks with real roles and alliances, and utilities that do one thing correctly.</p>
-        <p><span class="gt">&gt;</span> Storage done right — YAML where it fits, SQL with migrations where it matters. Permission-aware commands with full tab completion. MiniMessage-formatted feedback. Admin tools that treat the operator as a user.</p>
-        <p><span class="gt">&gt;</span> Nether RTP scans for a solid block with two air above; LiteBanX resolves offline players via async Mojang lookup before the main thread ever blocks; TeamX persists a shared ender chest across restarts. When a plugin ships, it should feel like it came with the server.</p>
-        <p class="meta">last-modified: 2026-07-29 · lines: 3 · encoding: utf-8</p>
-      </div>
-    </section>
-
-    <hr class="ascii-rule" />
-
-    <!-- PROJECTS -->
-    <section id="projects" class="section" tabindex="-1">
-      <div class="prompt"><span class="user">envidzz@craft</span><span class="sep">:</span><span class="path">~</span><span class="dollar">$</span> <span class="cmd">ls -la ./projects/</span></div>
-      <div class="output ls-listing">
-        <div class="ls-row"><span class="perms">drwxr-xr-x</span> <span class="lsname">SimpleRTP/</span> <span class="lsdesc">random-teleport · dimension GUI</span></div>
-        <div class="ls-row"><span class="perms">drwxr-xr-x</span> <span class="lsname">TeamX/</span> <span class="lsdesc">team framework · roles · alliances</span></div>
-        <div class="ls-row"><span class="perms">drwxr-xr-x</span> <span class="lsname">LiteBanX/</span> <span class="lsdesc">punishment suite · ban/mute/warn</span></div>
-      </div>
-      <div class="prompt"><span class="user">envidzz@craft</span><span class="sep">:</span><span class="path">~</span><span class="dollar">$</span> <span class="cmd">./compile --all</span></div>
-      <div class="output compile-log">
-        <div class="ok-line"><span class="ok">[ OK ]</span> SimpleRTP compiled · 7 features · build green</div>
-        <div class="ok-line"><span class="ok">[ OK ]</span> TeamX compiled · 8 features · build green</div>
-        <div class="ok-line"><span class="ok">[ OK ]</span> LiteBanX compiled · 12 features · build green</div>
-      </div>
-      <div class="hint">// press <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> to inspect, <kbd>/</kbd> to open contact&nbsp;&nbsp;<button id="recompile" class="recompile" title="recompile" aria-label="recompile">⟳</button></div>
-
-      <div class="cards">
-        <!-- SimpleRTP -->
-        <article class="card" data-slot="1" data-plugin="SimpleRTP" style="--accent:#33ff66">
-          <header class="card-head">
-            <span class="badge">1</span>
-            <span class="traffic" aria-hidden="true">▪ ▪ ▪</span>
-            <span class="card-path">~/plugins/SimpleRTP</span>
-            <span class="card-status">[ OK ]</span>
-            <span class="card-ver">v1.4.2 · mc:1.21+</span>
-            <button class="copy-btn" data-copy="/rtp" aria-label="copy command" title="copy">
-              <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M4 1h8v2h1v2h-1V3H5v9h2v1H4zm5 4h4v9H6v-1h3z"/></svg>
-            </button>
-          </header>
-          <div class="card-body">
-            <h3 class="card-name">SimpleRTP</h3>
-            <p class="card-tag">Random-teleport that respects the terrain — and the player's patience.</p>
-            <ul class="bullets" data-collapsed="true">
-              <li>/rtp opens a clickable dimension-picker GUI: Overworld / Nether / End; /rtp &lt;dimension&gt; teleports directly</li>
-              <li>Overworld lands only on true open-to-sky surfaces — never caves or overhangs</li>
+      <!-- PROJECTS -->
+      <section id="projects" class="view" role="tabpanel" hidden>
+        <div class="cards">
+          <article class="card" style="--accent:#33ff66">
+            <header>
+              <h3>SimpleRTP</h3>
+              <span class="ver">v1.4.2 · mc 1.21+</span>
+            </header>
+            <p class="tag">Random-teleport that respects the terrain.</p>
+            <ul>
+              <li>/rtp opens a dimension-picker GUI: Overworld / Nether / End</li>
+              <li>Overworld lands only on open-to-sky surfaces — never caves or overhangs</li>
               <li>Nether/End scan vertically for a solid block with 2 air above</li>
-              <li>Avoids lava, water, fire, magma, cactus, campfires, powder snow, berries, wither rose, cobwebs, leaves, doors, fences, walls</li>
+              <li>Avoids lava, water, fire, magma, cactus, powder snow, cobwebs and more</li>
               <li>Per-dimension radius, cooldown, and max attempts — all configurable</li>
-              <li>Enderman teleport sound on success</li>
-              <li>Admin: /rtpadmin enable|disable &lt;dimension&gt;, status, reload (alias /rtpa)</li>
+              <li>Admin: /rtpadmin enable|disable &lt;dim&gt;, status, reload (alias /rtpa)</li>
             </ul>
-            <button class="expand" aria-expanded="false">... show more (4)</button>
             <div class="chips">
-              <span class="chip-tech" data-desc="// Paper API 1.21">Paper API 1.21</span>
-              <span class="chip-tech" data-desc="// Java 21 LTS">Java 21</span>
-              <span class="chip-tech" data-desc="// MiniMessage-formatted text">Adventure Components</span>
-              <span class="chip-tech" data-desc="// Clickable inventory menu">InventoryHolder GUI</span>
-              <span class="chip-tech" data-desc="// MiniMessage-formatted feedback">MiniMessage</span>
+              <span>Paper API 1.21</span><span>Java 21</span><span>Adventure</span><span>GUI</span><span>MiniMessage</span>
             </div>
-          </div>
-        </article>
+          </article>
 
-        <!-- TeamX -->
-        <article class="card" data-slot="2" data-plugin="TeamX" style="--accent:#21e6ff">
-          <header class="card-head">
-            <span class="badge">2</span>
-            <span class="traffic" aria-hidden="true">▪ ▪ ▪</span>
-            <span class="card-path">~/plugins/TeamX</span>
-            <span class="card-status">[ OK ]</span>
-            <span class="card-ver">v2.1.0 · mc:1.21+</span>
-            <button class="copy-btn" data-copy="/team" aria-label="copy command" title="copy">
-              <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M4 1h8v2h1v2h-1V3H5v9h2v1H4zm5 4h4v9H6v-1h3z"/></svg>
-            </button>
-          </header>
-          <div class="card-body">
-            <h3 class="card-name">TeamX</h3>
-            <p class="card-tag">Teams with weight — roles, alliances, a shared chest, and a panel that actually works.</p>
-            <ul class="bullets" data-collapsed="true">
-              <li>/team panel GUI; team home with warmup that cancels on move or damage</li>
+          <article class="card" style="--accent:#21e6ff">
+            <header>
+              <h3>TeamX</h3>
+              <span class="ver">v2.1.0 · mc 1.21+</span>
+            </header>
+            <p class="tag">Teams with weight — roles, alliances, a shared chest.</p>
+            <ul>
+              <li>Team panel GUI; team home with warmup (cancels on move/damage)</li>
               <li>Shared ender chest persisted to disk across restarts (/team echest)</li>
-              <li>Roles: Owner / Officer / Member; owner announce and team chat (/tc)</li>
-              <li>Friendly-fire toggle; alliances (request/accept/break/deny) — allies can't damage each other</li>
-              <li>Tab list shows team name + color beside the player's name; rename, recolor, set description, disband</li>
-              <li>Admin: scan every team's shared chest for an item (/team admin echest scan mace); read-only snapshot of any team chest</li>
-              <li>YAML storage, one file per team; MiniMessage messages throughout</li>
+              <li>Roles: Owner / Officer / Member; team chat (/tc) and owner announce</li>
+              <li>Alliances (request/accept/break) — allies can't damage each other</li>
+              <li>Tab list shows team name + color; rename, recolor, disband</li>
+              <li>Admin: scan every team chest for an item; read-only snapshot of any chest</li>
             </ul>
-            <button class="expand" aria-expanded="false">... show more (4)</button>
             <div class="chips">
-              <span class="chip-tech" data-desc="// Paper / Spigot 1.21">Paper / Spigot</span>
-              <span class="chip-tech" data-desc="// Java 21 LTS">Java 21</span>
-              <span class="chip-tech" data-desc="// One file per team">YAML storage</span>
-              <span class="chip-tech" data-desc="// Clickable team panel">InventoryHolder GUI</span>
-              <span class="chip-tech" data-desc="// MiniMessage-formatted messages">MiniMessage</span>
+              <span>Paper / Spigot</span><span>Java 21</span><span>YAML</span><span>GUI</span><span>MiniMessage</span>
             </div>
-          </div>
-        </article>
+          </article>
 
-        <!-- LiteBanX -->
-        <article class="card" data-slot="3" data-plugin="LiteBanX" style="--accent:#ffb454">
-          <header class="card-head">
-            <span class="badge">3</span>
-            <span class="traffic" aria-hidden="true">▪ ▪ ▪</span>
-            <span class="card-path">~/plugins/LiteBanX</span>
-            <span class="card-status">[ OK ]</span>
-            <span class="card-ver">v3.0.1 · MIT · mc:1.21+</span>
-            <button class="copy-btn" data-copy="/banx" aria-label="copy command" title="copy">
-              <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M4 1h8v2h1v2h-1V3H5v9h2v1H4zm5 4h4v9H6v-1h3z"/></svg>
-            </button>
-          </header>
-          <div class="card-body">
-            <h3 class="card-name">LiteBanX <span class="alt-name">(BanX)</span></h3>
-            <p class="card-tag">A punishment suite that scales from a single /ban to a full moderation platform.</p>
-            <ul class="bullets" data-collapsed="true">
-              <li>Punishments: ban, tempban, ipban, tempipban, mute, tempmute, warn, tempwarn, kick, note</li>
-              <li>Namespaced /banx &lt;sub&gt; with full tab completion; short forms (/ban, /mute…) work too</li>
+          <article class="card" style="--accent:#ffb454">
+            <header>
+              <h3>LiteBanX <span class="alt">(BanX)</span></h3>
+              <span class="ver">v3.0.1 · MIT · mc 1.21+</span>
+            </header>
+            <p class="tag">A punishment suite that scales from one /ban to a full platform.</p>
+            <ul>
+              <li>ban, tempban, ipban, tempipban, mute, tempmute, warn, kick, note</li>
+              <li>/banx &lt;sub&gt; with full tab completion; short forms (/ban, /mute…) too</li>
               <li>Order-insensitive parsing — duration and reason in any order</li>
-              <li>Offline player support via DB cache + async Mojang lookup</li>
-              <li>Reason system: shorthand reason ids + reusable templates (reasons.yml); warning points with auto-escalation thresholds</li>
-              <li>Alt detection via IP tracking, shared-account flags, and join alerts</li>
-              <li>Themed ban/mute/kick screens recolored from one theme block; on-screen broadcast titles</li>
-              <li>Custom cancellable PunishEvent / UnpunishEvent API</li>
-              <li>Storage: MySQL (HikariCP) or embedded SQLite with auto schema migration</li>
-              <li>PlaceholderAPI placeholders; optional webhook (HTTP POST JSON + X-BanX-Secret header)</li>
-              <li>Importers for AdvancedBan &amp; LiteBans; exempt + override permissions</li>
-              <li>License: MIT</li>
+              <li>Offline players via DB cache + async Mojang lookup</li>
+              <li>Reason templates, warning points, and auto-escalation thresholds</li>
+              <li>Alt detection; themed ban/mute/kick screens; broadcast titles</li>
+              <li>MySQL (HikariCP) or SQLite with auto schema migration</li>
+              <li>PlaceholderAPI hooks; optional webhook; importers for AdvancedBan &amp; LiteBans</li>
             </ul>
-            <button class="expand" aria-expanded="false">... show more (9)</button>
-            <div class="ops-subgrid" aria-label="storage and ops">
-              <span class="chip-tech" data-desc="// JDBC connection pooling">HikariCP</span>
-              <span class="chip-tech" data-desc="// Embedded or remote storage">MySQL/SQLite</span>
-              <span class="chip-tech" data-desc="// PlaceholderAPI hooks">PlaceholderAPI</span>
-              <span class="chip-tech" data-desc="// HTTP POST JSON on every punishment">Webhook</span>
-              <span class="chip-tech" data-desc="// Import from AdvancedBan & LiteBans">Importers</span>
-              <span class="chip-tech" data-desc="// Open source license">MIT</span>
+            <div class="chips">
+              <span>Paper 1.21+</span><span>Java 21</span><span>HikariCP</span><span>SQLite/MySQL</span><span>PlaceholderAPI</span><span>MIT</span>
             </div>
-          </div>
-        </article>
-      </div>
-    </section>
+          </article>
+        </div>
+      </section>
 
-    <hr class="ascii-rule" />
+      <!-- STACK -->
+      <section id="stack" class="view" role="tabpanel" hidden>
+        <table class="stack">
+          <tbody>
+            <tr><td>platform</td><td>Paper / Spigot 1.21+</td></tr>
+            <tr><td>language</td><td>Java 21 (LTS)</td></tr>
+            <tr><td>ui</td><td>Adventure Components · MiniMessage · InventoryHolder GUIs</td></tr>
+            <tr><td>storage</td><td>YAML · SQLite · MySQL (HikariCP)</td></tr>
+            <tr><td>hooks</td><td>PlaceholderAPI · webhooks</td></tr>
+            <tr><td>build</td><td>Maven · shaded uber-jar</td></tr>
+            <tr><td>license</td><td>MIT (LiteBanX)</td></tr>
+          </tbody>
+        </table>
+      </section>
 
-    <!-- STACK / neofetch -->
-    <section id="stack" class="section" tabindex="-1">
-      <div class="prompt"><span class="user">envidzz@craft</span><span class="sep">:</span><span class="path">~</span><span class="dollar">$</span> <span class="cmd">neofetch</span></div>
-      <div class="output neofetch">
-        <pre class="ascii-logo" aria-hidden="true"><span class="g1">      ___</span>
-<span class="g1">     /   \</span>
-<span class="g2">    |  ▢  |        </span><span class="g1">envidzz</span>
-<span class="g2">     \___/</span>
-<span class="g3">   ┌───┬───┬───┐    </span><span class="g2">Paper / Spigot plugin dev</span>
-<span class="g3">   │ ▢ │ ▢ │ ▢ │    </span><span class="g3">Java 21 · MC 1.21+</span>
-<span class="g4">   ├───┼───┼───┤</span>
-<span class="g4">   │ ▢ │ ▢ │ ▢ │</span>
-<span class="g4">   ├───┼───┼───┤</span>
-<span class="g5">   │ ▢ │ ▢ │ ▢ │</span>
-<span class="g5">   └───┴───┴───┘</span></pre>
-        <dl class="stats">
-          <dt>OS</dt><dd>Paper / Spigot 1.21+</dd>
-          <dt>Kernel</dt><dd>Java 21 (LTS)</dd>
-          <dt>Shell</dt><dd>Adventure Components (MiniMessage)</dd>
-          <dt>UI</dt><dd>InventoryHolder GUIs</dd>
-          <dt>Storage</dt><dd>YAML · SQLite · MySQL (HikariCP)</dd>
-          <dt>Hooks</dt><dd>PlaceholderAPI · webhooks</dd>
-          <dt>Build</dt><dd>Maven · shaded uber-jar</dd>
-          <dt>Uptime</dt><dd>since first /reload</dd>
-          <dt>License</dt><dd>MIT (LiteBanX)</dd>
-        </dl>
-      </div>
-      <p class="meta center">packages: 3 installed · 0 vulnerabilities · all green</p>
-    </section>
+      <!-- CONTACT -->
+      <section id="contact" class="view" role="tabpanel" hidden>
+        <p class="lead">DMs open for commissions — custom plugins, porting, and fixes.</p>
+        <ul class="links">
+          <li><a href="https://github.com/locationzz" rel="noopener">github<span>github.com/locationzz</span></a></li>
+          <li><a href="#" rel="noopener">discord<span>envidzz</span></a></li>
+          <li><a href="mailto:envidzz@craft.local">email<span>envidzz@craft.local</span></a></li>
+        </ul>
+        <p class="note">// no telemetry · no tracking · no images · pure html/css/js</p>
+      </section>
+    </main>
 
-    <hr class="ascii-rule" />
-
-    <!-- CONTACT -->
-    <section id="contact" class="section" tabindex="-1">
-      <div class="prompt"><span class="user">envidzz@craft</span><span class="sep">:</span><span class="path">~</span><span class="dollar">$</span> <span class="cmd">envidzz --help</span></div>
-      <div class="output help">
-<pre>USAGE: envidzz [FLAG]
-  --github       github.com/envidzz        source, issues, releases
-  --discord      envidzz                   DMs open for commissions
-  --email        envidzz@craft.local       plugin inquiries
-  --commissions  open                      custom plugins · porting · fixes
-
-FLAGS:
-  --fast         polite-no unless the spec is clear
-  --license      MIT where it ships</pre>
-        <p class="comment italic">// no telemetry on this page · no tracking · no images · pure html/css/js</p>
-      </div>
-      <div class="say-line">
-        <label for="sayInput" class="prompt inline"><span class="user">envidzz@craft</span><span class="sep">:</span><span class="path">~</span><span class="dollar">$</span> say "<span class="cursor">▮</span></label>
-        <input id="sayInput" type="text" autocomplete="off" spellcheck="false" placeholder="type a message and hit enter…" aria-label="message to envidzz" />
-        <span class="say-quote">"</span>
-      </div>
-      <p class="final-line center">envidzz@craft:~$ <span class="cursor">▮</span></p>
-    </section>
-
-    <hr class="ascii-rule" />
-
-    <!-- FOOTER -->
-    <footer class="footer">
-      <div class="footer-cols">
-        <span>session ended. log saved to ~/.envidzz.log</span>
-        <span>built by envidzz — static html/css/js · 0 dependencies · 0 images · 0 network calls</span>
-        <span id="footerClock" class="clock">--:--:--</span>
-      </div>
-      <p class="footer-center">envidzz © 2026 — Paper/Spigot plugin developer &nbsp;·&nbsp; <a href="#top" class="to-top">↑ back to top</a></p>
-      <p class="logout">logout</p>
-    </footer>
-  </main>
-
-  <!-- status bar -->
-  <div class="statusbar" aria-hidden="true">
-    <span>envidzz@craft ~ uptime 99.9% load 1.21 ● plugins: 3 ● status: <span class="online">ONLINE</span></span>
-    <span class="clock" id="statusClock">--:--:--</span>
+    <footer class="foot">envidzz © 2026 — Paper/Spigot plugin developer</footer>
   </div>
-
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
-
   <script src="app.js"></script>
 </body>
 </html>
