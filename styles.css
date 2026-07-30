@@ -152,6 +152,98 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
 }
 .dl:hover { transform: translateY(-2px); background: var(--accent); color: #06210f; border-color: var(--accent); box-shadow: 0 6px 16px rgba(74, 222, 128, 0.22); }
 
+/* ---------- my plugins / download hub ---------- */
+.dl-list { display: grid; gap: 0.7rem; }
+.dl-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.85rem 1.1rem;
+  transition: border-color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.dl-row:hover { border-color: var(--border2); transform: translateY(-2px); }
+.dl-info { display: flex; flex-direction: column; gap: 0.1rem; }
+.dl-info h4 { margin: 0; font-size: 1rem; font-weight: 600; color: var(--text); }
+.dl-info .alt { color: var(--muted); font-weight: 500; font-size: 0.8em; }
+.dl-desc { font-size: 0.82rem; color: var(--muted); }
+.dl-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 0.15rem; }
+.dl-ver { font-family: var(--mono); font-size: 0.8rem; color: var(--accent); }
+.dl-size { font-family: var(--mono); font-size: 0.74rem; color: var(--dim); }
+.dl-row .dl { margin-top: 0; white-space: nowrap; }
+
+code { font-family: var(--mono); background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 0.05rem 0.35rem; font-size: 0.85em; color: var(--text); }
+
+/* ---------- reviews ---------- */
+.review-summary {
+  display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap;
+  margin: 1.4rem 0;
+  padding: 0.7rem 1rem;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+}
+.rs-score { font-size: 1.6rem; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
+.rs-stars { color: #f5c518; letter-spacing: 2px; font-size: 1.05rem; }
+.rs-count { color: var(--muted); font-size: 0.9rem; }
+
+.review-form {
+  display: grid; gap: 0.9rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.3rem 1.4rem;
+  margin-bottom: 2rem;
+}
+.rf-row { display: grid; grid-template-columns: 5rem 1fr; align-items: start; gap: 0.8rem; }
+.rf-label { font-family: var(--mono); font-size: 0.85rem; color: var(--dim); padding-top: 0.55rem; }
+.review-form input, .review-form textarea {
+  background: var(--bg); border: 1px solid var(--border2); border-radius: 8px;
+  color: var(--text); font-family: var(--sans); font-size: 0.95rem;
+  padding: 0.6rem 0.8rem; width: 100%; outline: none;
+  transition: border-color 0.2s var(--ease);
+}
+.review-form input:focus, .review-form textarea:focus { border-color: var(--accent); }
+.review-form textarea { resize: vertical; min-height: 80px; }
+.rf-submit { justify-self: start; margin-top: 0.2rem; }
+
+.stars { display: flex; gap: 0.2rem; padding-top: 0.35rem; }
+.star {
+  background: none; border: none; cursor: pointer;
+  font-size: 1.5rem; line-height: 1; color: var(--dim);
+  padding: 0; transition: color 0.15s var(--ease), transform 0.15s var(--ease);
+}
+.star:hover { transform: scale(1.12); }
+.star.on { color: #f5c518; }
+.star:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+.reviews-list { display: grid; gap: 0.8rem; }
+.review-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1rem 1.2rem;
+  animation: viewIn 0.3s var(--ease);
+}
+.rc-head { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.3rem; }
+.rc-name { font-weight: 600; color: var(--text); }
+.rc-stars { color: #f5c518; letter-spacing: 1px; font-size: 0.9rem; }
+.rc-date { margin-left: auto; font-family: var(--mono); font-size: 0.76rem; color: var(--dim); }
+.rc-body { color: var(--muted); margin: 0; font-size: 0.92rem; white-space: pre-wrap; }
+.reviews-empty { color: var(--dim); font-style: italic; }
+.reviews-error { color: var(--red, #ff6b6b); font-size: 0.85rem; }
+
+/* ---------- toast ---------- */
+.toast {
+  position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%) translateY(12px);
+  background: var(--surface); border: 1px solid var(--border2);
+  color: var(--text); padding: 0.6rem 1rem; border-radius: 10px;
+  font-size: 0.88rem; opacity: 0; pointer-events: none;
+  transition: opacity 0.2s var(--ease), transform 0.2s var(--ease); z-index: 900;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.toast.ok { border-color: var(--accent); color: var(--accent); }
+.toast.err { border-color: #ff6b6b; color: #ff6b6b; }
+
 /* ---------- pills ---------- */
 .pills { display: flex; flex-wrap: wrap; gap: 0.35rem; }
 .pills span {
@@ -211,6 +303,12 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
   .hero { padding: 4rem 0 3.5rem; }
   .meta { grid-template-columns: 1fr; }
   .contact-links a { flex-direction: column; align-items: flex-start; gap: 0.15rem; }
+  .dl-row { grid-template-columns: 1fr auto; grid-template-areas: "info dl" "meta dl"; row-gap: 0.4rem; }
+  .dl-row .dl-info { grid-area: info; }
+  .dl-row .dl-meta { grid-area: meta; flex-direction: row; align-items: center; gap: 0.6rem; }
+  .dl-row .dl { grid-area: dl; align-self: center; }
+  .rf-row { grid-template-columns: 1fr; gap: 0.3rem; }
+  .rf-label { padding-top: 0; }
 }
 
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
