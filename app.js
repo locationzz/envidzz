@@ -7,8 +7,8 @@
      Supabase config — fill these two values (free tier).
      The anon key is safe to expose with RLS enabled.
      ============================================================ */
-  var SUPABASE_URL = '';   // e.g. https://abcdefgh.supabase.co
-  var SUPABASE_ANON_KEY = '';
+  var SUPABASE_URL = 'https://clenbeafxzibwiocjctx.supabase.co';
+  var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNsZW5iZWFmeHppYndpb2NqY3R4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUzNjMxMTAsImV4cCI6MjEwMDkzOTExMH0.PfQkq_lIKYSZLnlhFeY5qS2YFqwRMBU9z8GumzhLL5s';
 
   function supabaseReady() { return SUPABASE_URL && SUPABASE_ANON_KEY; }
 
