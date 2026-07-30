@@ -4,13 +4,12 @@
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ============================================================
-     Supabase config — fill these two values (free tier).
-     The anon key is safe to expose with RLS enabled.
+     Reviews go through a serverless proxy on Vercel. The Supabase
+     key lives server-side in that function — it is NOT in this file,
+     not in the repo, and never sent to the browser. RLS still guards
+     the database; the proxy adds server-side validation too.
      ============================================================ */
-  var SUPABASE_URL = 'https://clenbeafxzibwiocjctx.supabase.co';
-  var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNsZW5iZWFmeHppYndpb2NqY3R4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUzNjMxMTAsImV4cCI6MjEwMDkzOTExMH0.PfQkq_lIKYSZLnlhFeY5qS2YFqwRMBU9z8GumzhLL5s';
-
-  function supabaseReady() { return SUPABASE_URL && SUPABASE_ANON_KEY; }
+  var API_URL = 'https://envidzz-api.vercel.app';
 
   /* ---------- loader: hello in 15 popular languages ---------- */
   var hellos = [
@@ -98,13 +97,6 @@
     paint(rating);
   })();
 
-  function authHeaders(extra) {
-    return Object.assign({
-      'apikey': SUPABASE_ANON_KEY,
-      'Authorization': 'Bearer ' + SUPABASE_ANON_KEY
-    }, extra || {});
-  }
-
   function fmtDate(iso) {
     try {
       var d = new Date(iso);
@@ -152,19 +144,17 @@
   function loadReviews() {
     var list = document.getElementById('reviewsList');
     if (!list) return;
-    if (!supabaseReady()) {
+    if (!API_URL) {
       list.textContent = '';
       var note = el('p', 'reviews-empty');
       note.textContent = 'reviews are being set up — check back shortly.';
       list.appendChild(note);
       return;
     }
-    fetch(SUPABASE_URL + '/rest/v1/reviews?select=name,rating,body,created_at&order=created_at.desc&limit=200', {
-      headers: authHeaders()
-    }).then(function (res) {
+    fetch(API_URL + '/api/reviews').then(function (res) {
       if (!res.ok) throw new Error('HTTP ' + res.status);
       return res.json();
-    }).then(renderReviews).catch(function (e) {
+    }).then(renderReviews).catch(function () {
       list.textContent = '';
       var err = el('p', 'reviews-error');
       err.textContent = "couldn't load reviews. try again later.";
@@ -186,7 +176,7 @@
     if (!form) return;
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (!supabaseReady()) { toast('reviews not configured yet', 'err'); return; }
+      if (!API_URL) { toast('reviews not configured yet', 'err'); return; }
       var name = (document.getElementById('rName').value || '').trim();
       var body = (document.getElementById('rBody').value || '').trim();
       if (!name || !body) { toast('name and review are required', 'err'); return; }
@@ -196,9 +186,9 @@
       var btn = document.getElementById('rSubmit');
       btn.disabled = true; btn.textContent = 'Posting…';
 
-      fetch(SUPABASE_URL + '/rest/v1/reviews', {
+      fetch(API_URL + '/api/reviews', {
         method: 'POST',
-        headers: authHeaders({ 'Content-Type': 'application/json', 'Prefer': 'return=representation' }),
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: name.slice(0, 32), rating: rating, body: body.slice(0, 1000) })
       }).then(function (res) {
         if (!res.ok) throw new Error('HTTP ' + res.status);

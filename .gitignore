@@ -1,6 +1,9 @@
 # dependencies
 node_modules/
 
+# serverless function source (deployed to Vercel, never committed — holds the Supabase key)
+/api/
+
 # os
 .DS_Store
 Thumbs.db
