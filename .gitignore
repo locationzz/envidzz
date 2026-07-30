@@ -11,3 +11,6 @@ Thumbs.db
 # editor
 .vscode/
 .idea/
+
+# project guide — kept local only, never pushed to GitHub
+CLAUDE.md
