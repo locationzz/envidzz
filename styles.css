@@ -80,6 +80,12 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
 .nav-links a:hover, .nav-links a.active, .nav-links a[aria-current="page"] { color: var(--text); }
 .nav-links a.active, .nav-links a[aria-current="page"] { font-weight: 600; }
 
+/* The "available for work" badge was removed from every page, but a
+   browser may hold a stale cached HTML copy that still contains the
+   span while it has the fresh stylesheet (which no longer styles it).
+   Hide it so it can never render as plain text during that rollover. */
+.status { display: none; }
+
 /* ---------- hero ---------- */
 .hero { padding: 6rem 0 5rem; }
 .hero h1 {
