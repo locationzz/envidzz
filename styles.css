@@ -77,8 +77,8 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
 .nav-logo { font-weight: 700; letter-spacing: -0.02em; color: var(--text); }
 .nav-links { display: flex; gap: 1.3rem; margin-left: auto; }
 .nav-links a { color: var(--muted); font-size: 0.9rem; font-weight: 500; transition: color 0.2s var(--ease); }
-.nav-links a:hover, .nav-links a.active { color: var(--text); }
-.nav-links a.active { font-weight: 600; }
+.nav-links a:hover, .nav-links a.active, .nav-links a[aria-current="page"] { color: var(--text); }
+.nav-links a.active, .nav-links a[aria-current="page"] { font-weight: 600; }
 .status {
   display: inline-flex; align-items: center; gap: 0.4rem;
   font-size: 0.8rem; color: var(--muted);
@@ -116,12 +116,31 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
 
 /* ---------- sections ---------- */
 .section { padding: 3.5rem 0; border-top: 1px solid var(--border); }
+main > .section:first-child { padding-top: 4.5rem; }
 .section-title {
   font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em;
   margin: 0 0 1.6rem; display: flex; align-items: baseline; gap: 0.4rem;
 }
 .section-title .hash { color: var(--accent); font-weight: 600; }
 .section p { color: var(--muted); max-width: 65ch; margin: 0 0 1rem; }
+
+/* ---------- home hub ---------- */
+.hub { display: grid; gap: 0.9rem; margin-top: 1.4rem; }
+.page-card {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.1rem 1.3rem;
+  transition: border-color 0.25s var(--ease), transform 0.25s var(--ease), background 0.25s var(--ease);
+}
+.page-card:hover { border-color: var(--border2); transform: translateY(-2px); background: #161618; }
+.page-card .pc-text { display: flex; flex-direction: column; gap: 0.15rem; }
+.page-card .pc-title { font-weight: 600; color: var(--text); font-size: 1.05rem; }
+.page-card .pc-desc { font-size: 0.85rem; color: var(--muted); }
+.page-card .pc-arrow { font-family: var(--mono); color: var(--accent); font-size: 1.1rem; transition: transform 0.2s var(--ease); }
+.page-card:hover .pc-arrow { transform: translateX(4px); }
+@media (max-width: 600px) {
+  .page-card { padding: 0.95rem 1.1rem; }
+}
 
 /* ---------- work ---------- */
 .work { display: grid; gap: 1rem; }

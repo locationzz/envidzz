@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Loading overlay: hello in 15 languages -->
+  <!-- Loading overlay: hello in 15 languages (Home only) -->
   <div id="loader" class="loader">
     <div class="loader-word" id="loaderWord">Hello</div>
     <div class="loader-bar"><span id="loaderBar"></span></div>
@@ -22,15 +22,15 @@
   <div id="page" class="page">
     <!-- Nav -->
     <header class="nav" id="nav">
-      <a class="nav-logo" href="#home">envidzz</a>
+      <a class="nav-logo" href=".">envidzz</a>
       <nav class="nav-links" aria-label="sections">
-        <a href="#home">Home</a>
-        <a href="#projects">Projects</a>
-        <a href="#plugins">Plugins</a>
-        <a href="#about">About</a>
-        <a href="#stack">Stack</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#contact">Contact</a>
+        <a href="." aria-current="page">Home</a>
+        <a href="projects/">Projects</a>
+        <a href="plugins/">Plugins</a>
+        <a href="about/">About</a>
+        <a href="stack/">Stack</a>
+        <a href="reviews/">Reviews</a>
+        <a href="contact/">Contact</a>
       </nav>
       <span class="status"><span class="dot"></span> available for work</span>
     </header>
@@ -43,206 +43,56 @@
         <p class="lede">I build server-grade plugins for modern 1.21+ servers — punishment suites, team frameworks, secure trading, and utilities that do one thing, well. Storage done right, permission-aware commands, MiniMessage UX, and admin tooling that respects the operator.</p>
         <p class="comment">// currently working on an arena plugin</p>
         <div class="cta">
-          <a href="#projects" class="btn btn-primary">View projects</a>
-          <a href="#plugins" class="btn btn-ghost">Download plugins</a>
+          <a href="projects/" class="btn btn-primary">View projects</a>
+          <a href="plugins/" class="btn btn-ghost">Download plugins</a>
         </div>
       </section>
 
-      <!-- Projects -->
-      <section id="projects" class="section reveal">
-        <h2 class="section-title"><span class="hash">#</span> Projects</h2>
-        <div class="work">
-          <article class="work-item">
-            <div class="work-head">
-              <h3>SimpleRTP</h3>
-              <span class="work-kind">utility · GUI</span>
-            </div>
-            <p>Random-teleport plugin with a dimension-picker GUI. Overworld lands only on true open-to-sky surfaces — never caves or overhangs; Nether/End scan vertically for a solid block with two air above. Per-dimension radius, cooldown, and admin toggles.</p>
-            <div class="pills">
-              <span>Paper 1.21</span><span>Java 21</span><span>Adventure</span><span>GUI</span><span>MiniMessage</span>
-            </div>
-          </article>
-
-          <article class="work-item">
-            <div class="work-head">
-              <h3>TeamX</h3>
-              <span class="work-kind">framework</span>
-            </div>
-            <p>A team plugin with weight — roles, alliances, a shared ender chest persisted across restarts, team home with warmup, team chat, and a tab-color system. Admins can scan every team's chest for an item and open read-only snapshots.</p>
-            <div class="pills">
-              <span>Paper / Spigot</span><span>Java 21</span><span>YAML</span><span>GUI</span><span>MiniMessage</span>
-            </div>
-          </article>
-
-          <article class="work-item">
-            <div class="work-head">
-              <h3>TradePlugin</h3>
-              <span class="work-kind">secure trading</span>
-            </div>
-            <p>A secure player-to-player trade plugin with an 8-item GUI, both-side accept confirmation, and anti-scam safety. Full trade history and a log, with admin tooling to review past trades. No items move until both players lock in.</p>
-            <div class="pills">
-              <span>Paper 1.21</span><span>Java 21</span><span>GUI</span><span>MiniMessage</span><span>History</span>
-            </div>
-          </article>
-
-          <article class="work-item">
-            <div class="work-head">
-              <h3>LiteBanX <span class="alt">(BanX)</span></h3>
-              <span class="work-kind">punishment suite</span>
-            </div>
-            <p>A fully-featured punishment plugin — bans, IP-bans, tempbans, mutes, warns, kicks, notes. Order-insensitive parsing, offline-player support via async Mojang lookup, warning-point escalation, alt detection, themed screens, MySQL/SQLite, PlaceholderAPI, webhooks, and importers for AdvancedBan &amp; LiteBans.</p>
-            <div class="pills">
-              <span>Paper 1.21+</span><span>Java 21</span><span>HikariCP</span><span>SQLite/MySQL</span><span>PlaceholderAPI</span><span>MIT</span>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- My Plugins / downloads hub -->
-      <section id="plugins" class="section reveal">
-        <h2 class="section-title"><span class="hash">#</span> My Plugins</h2>
-        <p class="comment">// drop into <code>plugins/</code> and restart — built for Paper 1.21+ / Java 21</p>
-        <div class="dl-list">
-          <div class="dl-row">
-            <div class="dl-info">
-              <h4>SimpleRTP</h4>
-              <span class="dl-desc">Dimension-picker random teleport</span>
-            </div>
-            <div class="dl-meta">
-              <span class="dl-ver">v1.0.1</span>
-              <span class="dl-size">19 KB</span>
-            </div>
-            <a class="dl" href="downloads/SimpleRTP.jar" download>↓ .jar</a>
-          </div>
-
-          <div class="dl-row">
-            <div class="dl-info">
-              <h4>TeamX</h4>
-              <span class="dl-desc">Teams, alliances, shared ender chest</span>
-            </div>
-            <div class="dl-meta">
-              <span class="dl-ver">v1.0.5</span>
-              <span class="dl-size">85 KB</span>
-            </div>
-            <a class="dl" href="downloads/TeamX-1.0.5.jar" download>↓ .jar</a>
-          </div>
-
-          <div class="dl-row">
-            <div class="dl-info">
-              <h4>TradePlugin</h4>
-              <span class="dl-desc">Secure 8-item player-to-player trading</span>
-            </div>
-            <div class="dl-meta">
-              <span class="dl-ver">v1.0.5</span>
-              <span class="dl-size">48 KB</span>
-            </div>
-            <a class="dl" href="downloads/TradePlugin-1.0.5.jar" download>↓ .jar</a>
-          </div>
-
-          <div class="dl-row">
-            <div class="dl-info">
-              <h4>LiteBanX <span class="alt">(BanX)</span></h4>
-              <span class="dl-desc">Full punishment suite</span>
-            </div>
-            <div class="dl-meta">
-              <span class="dl-ver">v1.0.4</span>
-              <span class="dl-size">17.7 MB</span>
-            </div>
-            <a class="dl" href="downloads/LiteBanX-1.0.4.jar" download>↓ .jar</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- About -->
-      <section id="about" class="section reveal">
-        <h2 class="section-title"><span class="hash">#</span> About</h2>
-        <p>I build Minecraft plugins for Paper and Spigot on Java 21, targeting modern 1.21+ servers. My work leans toward the systems operators actually need: punishment suites that won't fight you, team frameworks with real roles and alliances, secure trading, and utilities that do one thing correctly.</p>
-        <p>Storage done right — YAML where it fits, SQL with migrations where it matters. Permission-aware commands with full tab completion. MiniMessage-formatted feedback. Admin tools that treat the operator as a user. When a plugin ships, it should feel like it came with the server.</p>
-        <dl class="meta">
-          <div><dt>focus</dt><dd>Paper / Spigot plugins</dd></div>
-          <div><dt>language</dt><dd>Java 21</dd></div>
-          <div><dt>platform</dt><dd>Minecraft 1.21+</dd></div>
-          <div><dt>status</dt><dd>building &amp; available</dd></div>
-        </dl>
-      </section>
-
-      <!-- Stack -->
-      <section id="stack" class="section reveal">
-        <h2 class="section-title"><span class="hash">#</span> Stack</h2>
-        <div class="skill-groups">
-          <div class="skill-group">
-            <h4>Platform</h4>
-            <div class="pills"><span>Paper</span><span>Spigot</span><span>Minecraft 1.21+</span></div>
-          </div>
-          <div class="skill-group">
-            <h4>Language</h4>
-            <div class="pills"><span>Java 21</span><span>Maven</span></div>
-          </div>
-          <div class="skill-group">
-            <h4>Storage &amp; Hooks</h4>
-            <div class="pills"><span>YAML</span><span>SQLite</span><span>MySQL</span><span>HikariCP</span><span>PlaceholderAPI</span><span>Webhooks</span></div>
-          </div>
-          <div class="skill-group">
-            <h4>UI &amp; UX</h4>
-            <div class="pills"><span>Adventure</span><span>MiniMessage</span><span>InventoryHolder GUIs</span><span>Tab completion</span></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Reviews -->
-      <section id="reviews" class="section reveal">
-        <h2 class="section-title"><span class="hash">#</span> Reviews</h2>
-        <p class="comment">// used my plugin or had work done by me? leave me a review.</p>
-
-        <div class="review-summary" id="reviewSummary" hidden>
-          <span class="rs-score" id="rsAvg">—</span>
-          <span class="rs-stars" id="rsStars"></span>
-          <span class="rs-count" id="rsCount">0 reviews</span>
-        </div>
-
-        <form class="review-form" id="reviewForm">
-          <div class="rf-row">
-            <label class="rf-label" for="rName">name</label>
-            <input id="rName" name="name" type="text" maxlength="32" placeholder="your name or username" required />
-          </div>
-          <div class="rf-row">
-            <span class="rf-label">rating</span>
-            <div class="stars" id="rStars" role="radiogroup" aria-label="rating">
-              <button type="button" class="star" data-v="1" aria-label="1 star">★</button>
-              <button type="button" class="star" data-v="2" aria-label="2 stars">★</button>
-              <button type="button" class="star" data-v="3" aria-label="3 stars">★</button>
-              <button type="button" class="star" data-v="4" aria-label="4 stars">★</button>
-              <button type="button" class="star" data-v="5" aria-label="5 stars">★</button>
-            </div>
-          </div>
-          <div class="rf-row">
-            <label class="rf-label" for="rBody">review</label>
-            <textarea id="rBody" name="body" maxlength="1000" placeholder="what did you think?" required></textarea>
-          </div>
-          <button class="btn btn-primary rf-submit" type="submit" id="rSubmit">Post review</button>
-        </form>
-
-        <div class="reviews-list" id="reviewsList">
-          <p class="reviews-empty" id="reviewsEmpty">loading reviews…</p>
-        </div>
-      </section>
-
-      <!-- Contact -->
-      <section id="contact" class="section reveal">
-        <h2 class="section-title"><span class="hash">#</span> Contact</h2>
-        <p class="comment">// DMs open for commissions — custom plugins, porting, and fixes</p>
-        <div class="contact-links">
-          <a href="mailto:contactbytesoftware@gmail.com">
-            <span class="cl-label">Email</span>
-            <span class="cl-val">contactbytesoftware@gmail.com</span>
+      <!-- Hub -->
+      <section id="hub" class="section reveal">
+        <h2 class="section-title"><span class="hash">#</span> Explore</h2>
+        <div class="hub">
+          <a class="page-card" href="projects/">
+            <span class="pc-text">
+              <span class="pc-title">Projects</span>
+              <span class="pc-desc">SimpleRTP, TeamX, TradePlugin, LiteBanX</span>
+            </span>
+            <span class="pc-arrow">→</span>
           </a>
-          <a href="https://github.com/locationzz" rel="noopener">
-            <span class="cl-label">GitHub</span>
-            <span class="cl-val">github.com/locationzz</span>
+          <a class="page-card" href="plugins/">
+            <span class="pc-text">
+              <span class="pc-title">Plugins</span>
+              <span class="pc-desc">Download the built .jar files</span>
+            </span>
+            <span class="pc-arrow">→</span>
           </a>
-          <a href="#" rel="noopener">
-            <span class="cl-label">Discord</span>
-            <span class="cl-val">xz.z_z</span>
+          <a class="page-card" href="about/">
+            <span class="pc-text">
+              <span class="pc-title">About</span>
+              <span class="pc-desc">What I build and how I build it</span>
+            </span>
+            <span class="pc-arrow">→</span>
+          </a>
+          <a class="page-card" href="stack/">
+            <span class="pc-text">
+              <span class="pc-title">Stack</span>
+              <span class="pc-desc">Platform, language, storage, UI</span>
+            </span>
+            <span class="pc-arrow">→</span>
+          </a>
+          <a class="page-card" href="reviews/">
+            <span class="pc-text">
+              <span class="pc-title">Reviews</span>
+              <span class="pc-desc">Read what people say — leave one</span>
+            </span>
+            <span class="pc-arrow">→</span>
+          </a>
+          <a class="page-card" href="contact/">
+            <span class="pc-text">
+              <span class="pc-title">Contact</span>
+              <span class="pc-desc">DMs open for commissions</span>
+            </span>
+            <span class="pc-arrow">→</span>
           </a>
         </div>
       </section>

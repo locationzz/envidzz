@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="envidzz — projects: SimpleRTP, TeamX, TradePlugin, LiteBanX. Minecraft Paper / Spigot plugins, Java 21, MC 1.21+." />
+  <meta name="color-scheme" content="dark" />
+  <title>envidzz — projects</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <div id="page" class="page ready">
+    <header class="nav" id="nav">
+      <a class="nav-logo" href="../">envidzz</a>
+      <nav class="nav-links" aria-label="sections">
+        <a href="../">Home</a>
+        <a href="./" aria-current="page">Projects</a>
+        <a href="../plugins/">Plugins</a>
+        <a href="../about/">About</a>
+        <a href="../stack/">Stack</a>
+        <a href="../reviews/">Reviews</a>
+        <a href="../contact/">Contact</a>
+      </nav>
+      <span class="status"><span class="dot"></span> available for work</span>
+    </header>
+
+    <main>
+      <section id="projects" class="section reveal">
+        <h2 class="section-title"><span class="hash">#</span> Projects</h2>
+        <div class="work">
+          <article class="work-item">
+            <div class="work-head">
+              <h3>SimpleRTP</h3>
+              <span class="work-kind">utility · GUI</span>
+            </div>
+            <p>Random-teleport plugin with a dimension-picker GUI. Overworld lands only on true open-to-sky surfaces — never caves or overhangs; Nether/End scan vertically for a solid block with two air above. Per-dimension radius, cooldown, and admin toggles.</p>
+            <div class="pills">
+              <span>Paper 1.21</span><span>Java 21</span><span>Adventure</span><span>GUI</span><span>MiniMessage</span>
+            </div>
+          </article>
+
+          <article class="work-item">
+            <div class="work-head">
+              <h3>TeamX</h3>
+              <span class="work-kind">framework</span>
+            </div>
+            <p>A team plugin with weight — roles, alliances, a shared ender chest persisted across restarts, team home with warmup, team chat, and a tab-color system. Admins can scan every team's chest for an item and open read-only snapshots.</p>
+            <div class="pills">
+              <span>Paper / Spigot</span><span>Java 21</span><span>YAML</span><span>GUI</span><span>MiniMessage</span>
+            </div>
+          </article>
+
+          <article class="work-item">
+            <div class="work-head">
+              <h3>TradePlugin</h3>
+              <span class="work-kind">secure trading</span>
+            </div>
+            <p>A secure player-to-player trade plugin with an 8-item GUI, both-side accept confirmation, and anti-scam safety. Full trade history and a log, with admin tooling to review past trades. No items move until both players lock in.</p>
+            <div class="pills">
+              <span>Paper 1.21</span><span>Java 21</span><span>GUI</span><span>MiniMessage</span><span>History</span>
+            </div>
+          </article>
+
+          <article class="work-item">
+            <div class="work-head">
+              <h3>LiteBanX <span class="alt">(BanX)</span></h3>
+              <span class="work-kind">punishment suite</span>
+            </div>
+            <p>A fully-featured punishment plugin — bans, IP-bans, tempbans, mutes, warns, kicks, notes. Order-insensitive parsing, offline-player support via async Mojang lookup, warning-point escalation, alt detection, themed screens, MySQL/SQLite, PlaceholderAPI, webhooks, and importers for AdvancedBan &amp; LiteBans.</p>
+            <div class="pills">
+              <span>Paper 1.21+</span><span>Java 21</span><span>HikariCP</span><span>SQLite/MySQL</span><span>PlaceholderAPI</span><span>MIT</span>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <span>envidzz © 2026</span>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="../app.js"></script>
+</body>
+</html>

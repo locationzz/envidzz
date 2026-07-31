@@ -9,6 +9,8 @@
      not in the repo, and never sent to the browser. RLS still guards
      the database; the proxy adds server-side validation too.
      ============================================================ */
+  /* The loader (#loader) only exists on the Home page. Subpages render
+     with the `ready` class already on #page, so they show instantly. */
   var API_URL = 'https://envidzz-api.vercel.app';
 
   /* ---------- loader: hello in 15 popular languages ---------- */
@@ -23,7 +25,8 @@
     var word = document.getElementById('loaderWord');
     var bar = document.getElementById('loaderBar');
     var page = document.getElementById('page');
-    if (!loader || !word || !bar || !page) return;
+    if (!loader) { if (page) page.classList.add('ready'); return; }
+    if (!word || !bar || !page) return;
     if (reduced) { loader.classList.add('hide'); page.classList.add('ready'); return; }
 
     var i = 0, per = 130;
@@ -54,18 +57,6 @@
       entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     els.forEach(function (e) { io.observe(e); });
-  })();
-
-  /* ---------- active nav link ---------- */
-  (function activeLink() {
-    var links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
-    var sections = links.map(function (l) { return document.querySelector(l.getAttribute('href')); }).filter(Boolean);
-    if (!sections.length) return;
-    window.addEventListener('scroll', function () {
-      var y = window.scrollY + 120, current = sections[0].id;
-      sections.forEach(function (s) { if (s.offsetTop <= y) current = s.id; });
-      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === '#' + current); });
-    }, { passive: true });
   })();
 
   /* ---------- toast ---------- */

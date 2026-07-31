@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="envidzz — reviews: read what people say, or leave one yourself." />
+  <meta name="color-scheme" content="dark" />
+  <title>envidzz — reviews</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <div id="page" class="page ready">
+    <header class="nav" id="nav">
+      <a class="nav-logo" href="../">envidzz</a>
+      <nav class="nav-links" aria-label="sections">
+        <a href="../">Home</a>
+        <a href="../projects/">Projects</a>
+        <a href="../plugins/">Plugins</a>
+        <a href="../about/">About</a>
+        <a href="../stack/">Stack</a>
+        <a href="./" aria-current="page">Reviews</a>
+        <a href="../contact/">Contact</a>
+      </nav>
+      <span class="status"><span class="dot"></span> available for work</span>
+    </header>
+
+    <main>
+      <section id="reviews" class="section reveal">
+        <h2 class="section-title"><span class="hash">#</span> Reviews</h2>
+        <p class="comment">// used my plugin or had work done by me? leave me a review.</p>
+
+        <div class="review-summary" id="reviewSummary" hidden>
+          <span class="rs-score" id="rsAvg">—</span>
+          <span class="rs-stars" id="rsStars"></span>
+          <span class="rs-count" id="rsCount">0 reviews</span>
+        </div>
+
+        <form class="review-form" id="reviewForm">
+          <div class="rf-row">
+            <label class="rf-label" for="rName">name</label>
+            <input id="rName" name="name" type="text" maxlength="32" placeholder="your name or username" required />
+          </div>
+          <div class="rf-row">
+            <span class="rf-label">rating</span>
+            <div class="stars" id="rStars" role="radiogroup" aria-label="rating">
+              <button type="button" class="star" data-v="1" aria-label="1 star">★</button>
+              <button type="button" class="star" data-v="2" aria-label="2 stars">★</button>
+              <button type="button" class="star" data-v="3" aria-label="3 stars">★</button>
+              <button type="button" class="star" data-v="4" aria-label="4 stars">★</button>
+              <button type="button" class="star" data-v="5" aria-label="5 stars">★</button>
+            </div>
+          </div>
+          <div class="rf-row">
+            <label class="rf-label" for="rBody">review</label>
+            <textarea id="rBody" name="body" maxlength="1000" placeholder="what did you think?" required></textarea>
+          </div>
+          <button class="btn btn-primary rf-submit" type="submit" id="rSubmit">Post review</button>
+        </form>
+
+        <div class="reviews-list" id="reviewsList">
+          <p class="reviews-empty" id="reviewsEmpty">loading reviews…</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <span>envidzz © 2026</span>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="../app.js"></script>
+</body>
+</html>
