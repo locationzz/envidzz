@@ -1,19 +1,9 @@
-/* envidzz — portfolio + reviews. no deps, no images. */
 (function () {
   'use strict';
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ============================================================
-     Reviews go through a serverless proxy on Vercel. The Supabase
-     key lives server-side in that function — it is NOT in this file,
-     not in the repo, and never sent to the browser. RLS still guards
-     the database; the proxy adds server-side validation too.
-     ============================================================ */
-  /* The loader (#loader) only exists on the Home page. Subpages render
-     with the `ready` class already on #page, so they show instantly. */
   var API_URL = 'https://envidzz-api.vercel.app';
 
-  /* ---------- loader: hello in 15 popular languages ---------- */
   var hellos = [
     'Hello', '你好', 'こんにちは', '안녕하세요', 'नमस्ते',
     'Hola', 'Bonjour', 'Hallo', 'Здравствуйте', 'مرحبا',
@@ -44,12 +34,10 @@
     }, per);
   })();
 
-  /* ---------- nav scrolled state ---------- */
   var nav = document.getElementById('nav');
   function onScrollNav() { if (nav) nav.classList.toggle('scrolled', window.scrollY > 8); }
   onScrollNav(); window.addEventListener('scroll', onScrollNav, { passive: true });
 
-  /* ---------- scroll reveal ---------- */
   (function reveal() {
     var els = document.querySelectorAll('.reveal');
     if (reduced || !('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
@@ -59,7 +47,6 @@
     els.forEach(function (e) { io.observe(e); });
   })();
 
-  /* ---------- toast ---------- */
   var toastEl = document.getElementById('toast');
   var toastTimer = null;
   function toast(msg, kind) {
@@ -70,9 +57,6 @@
     toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 2200);
   }
 
-  /* ============================================================
-     Reviews
-     ============================================================ */
   var starsWrap = document.getElementById('rStars');
   var rating = 0;
 
@@ -153,7 +137,6 @@
     });
   }
 
-  // basic spam cooldown via localStorage (soft, client-side only)
   function onCooldown() {
     try {
       var last = parseInt(localStorage.getItem('envidzz_review_last') || '0', 10);
